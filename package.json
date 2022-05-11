@@ -1,8 +1,8 @@
 {
   "name": "xprezzo-content-type",
   "description": "Create and parse HTTP Content-Type header",
-  "version": "1.0.0",
-  "author": "Ben Ajenoui <info@seohero.io>",
+  "version": "1.1.0",
+  "author": "Cloudgen Wong <cloudgen.wong@gmail.com>",
   "license": "MIT",
   "keywords": [
     "content-type",

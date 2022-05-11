@@ -1,6 +1,6 @@
 /*!
  * xprezzo-content-type
- * Copyright(c) Ben Ajenoui <info@seohero.io>
+ * Copyright(c) Cloudgen Wong <cloudgen.wong@gmail.com>
  * MIT Licensed
  */
 
