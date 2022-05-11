@@ -54,7 +54,7 @@ const TYPE_REGEXP = /^[!#$%&'*+.^_`|~0-9A-Za-z-]+\/[!#$%&'*+.^_`|~0-9A-Za-z-]+$/
  * @private
  */
 
-const getcontenttype = (obj) => {
+const getContentType = (obj) => {
   let header
 
   if (typeof obj.getHeader === 'function') {
@@ -79,7 +79,7 @@ const getcontenttype = (obj) => {
  * @return {string}
  * @private
  */
-const qstring = (val) => {
+const quoteString = (val) => {
   const str = String(val)
 
   // no need to quote tokens
@@ -138,7 +138,7 @@ exports.format = (obj) => {
         throw new TypeError('invalid parameter name')
       }
 
-      string += '; ' + param + '=' + qstring(parameters[param])
+      string += '; ' + param + '=' + quoteString(parameters[param])
     }
   }
 
@@ -159,7 +159,7 @@ exports.parse = (string) => {
 
   // support req/res-like objects as argument
   const header = typeof string === 'object'
-    ? getcontenttype(string)
+    ? getContentType(string)
     : string
 
   if (typeof header !== 'string') {
@@ -168,7 +168,7 @@ exports.parse = (string) => {
 
   let index = header.indexOf(';')
   const type = index !== -1
-    ? header.substr(0, index).trim()
+    ? header.substring(0, index).trim()
     : header.trim()
 
   if (!TYPE_REGEXP.test(type)) {
@@ -195,7 +195,7 @@ exports.parse = (string) => {
       if (value[0] === '"') {
         // remove quotes and escapes
         value = value
-          .substr(1, value.length - 2)
+          .substring(1, value.length - 1)
           .replace(QESC_REGEXP, '$1')
       }
 
